@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seatig.dao.ContentDao">
+
+    <resultMap id="Content" type="com.seatig.domain.Content">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="imgUrl" column="img_url" jdbcType="VARCHAR"/>
+        <result property="imgTitle" column="img_title" jdbcType="VARCHAR"/>
+        <result property="imgTxt" column="img_txt" jdbcType="VARCHAR"/>
+        <result property="imgUser" column="img_user" jdbcType="INTEGER"/>
+        <result property="imgDate" column="img_date" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+
+    <resultMap id="test" type="HashMap">
+        <result property="investid" column="invest_id" jdbcType="VARCHAR" />
+        <result property="modifytime" column="modify_time" jdbcType="DATE"/>
+
+
+    </resultMap>
+
+    <select id="getContent" parameterType="map" resultMap="Content">
+        SELECT * FROM t_content LIMIT #{num} OFFSET #{page};
+    </select>
+
+
+    <insert id="setContent" parameterType="com.seatig.domain.Content">
+        INSERT INTO t_content(img_url,img_title,img_txt,img_user) VALUES(#{imgUrl},#{imgTitle},#{imgTxt},#{imgUser})
+    </insert>
+
+
+
+    <select id="test" resultMap="test">
+
+    </select>
+</mapper>

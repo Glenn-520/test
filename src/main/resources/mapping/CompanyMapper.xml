@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seatig.dao.CompanyMapper">
+
+	<select id="getCompanyByStr" resultType="com.seatig.domain.Company" parameterType="String">
+		SELECT c.* FROM t_company c
+		<if test="search!=null">
+			WHERE c.name LIKE '%${search}%' OR
+			c.lei LIKE '%${search}%' OR
+			c.phone LIKE '%${search}%'
+		</if>
+
+
+
+
+	</select>
+
+
+</mapper>
